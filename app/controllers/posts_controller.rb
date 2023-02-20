@@ -13,6 +13,7 @@ class PostsController < ApplicationController
         @post["description"] = params["post"]["description"]
         @post["place_id"] = params["post"]["place_id"]
         @post.save
+        @place = Place.find_by({ "id" => @post["place_id"] })
         redirect_to "/places/#{@place["name"]}"
     end
 end
